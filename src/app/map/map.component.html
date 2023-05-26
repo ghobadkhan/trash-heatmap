@@ -1,1 +1,7 @@
-<p>map works!</p>
+<div *ngIf="mapIsReady | async">
+    <h2 #daTitle>map works!</h2>
+    <google-map [options]="options" (mapClick)="setMarker($event)" #theMap>
+        <map-marker #marker="mapMarker" *ngIf="markerPos" [position]="markerPos" (mapClick)="openInfoWindow(marker)"></map-marker>
+        <map-info-window>{{markerPos?.lat()?.toPrecision(5)}},{{markerPos?.lng()?.toPrecision(5)}}</map-info-window>
+    </google-map>
+</div>
