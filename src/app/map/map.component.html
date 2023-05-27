@@ -3,5 +3,6 @@
     <google-map [options]="options" (mapClick)="setMarker($event)" #theMap>
         <map-marker #marker="mapMarker" *ngIf="markerPos" [position]="markerPos" (mapClick)="openInfoWindow(marker)"></map-marker>
         <map-info-window>{{markerPos?.lat()?.toPrecision(5)}},{{markerPos?.lng()?.toPrecision(5)}}</map-info-window>
+        <map-heatmap-layer *ngIf="(heatMapData|async)?.length" [options]="heatMapOptions" [data]="(heatMapData | async)!"></map-heatmap-layer>
     </google-map>
 </div>
