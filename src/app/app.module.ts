@@ -7,12 +7,16 @@ import { MapComponent } from './map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReportLitterComponent } from './report-litter/report-litter.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
+    ReportLitterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   exports: [
     MapComponent

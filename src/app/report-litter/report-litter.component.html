@@ -1,0 +1,19 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+    <label for="pieces">How Many?</label>
+    <input id="pieces" type="number" formControlName="pieces">
+    <label for="comment">Any thoughts?</label>
+    <input id="comment" type="text" formControlName="comment">
+    <input id="pics" type="file" (change)="onFileSelect($event)" accept="image/png, image/jpeg" hidden #picsInput>
+    <label for="pics-select">Want to add pictures?</label>
+    <button id="pic-select" type="button" (click)="openSelector()">Select Pictures</button>
+    <ul *ngIf="fileList$">
+        <li *ngFor="let item of fileList$ | async | keyvalue">
+            {{item.value.name}}
+            <button class="remove-btn" (click)="onFileRemove(item.key)">X</button>
+            <div class="progress-bar">
+                <div [style.width.%]="uploadProgress[item.key]" class="progress"></div>
+            </div>
+        </li>
+    </ul>
+    <button type="submit">Submit it!</button>
+</form>
