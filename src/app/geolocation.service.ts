@@ -38,10 +38,9 @@ export class GeolocationService {
   private handleLocationError(
     browserHasGeolocation: boolean
   ) {
-    let message = browserHasGeolocation
+    return browserHasGeolocation
     ? "Error: The Geolocation service failed."
     : "Error: Your browser doesn't support geolocation."
-    window.alert(message)
   }
   
 }

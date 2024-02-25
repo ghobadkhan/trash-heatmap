@@ -3,11 +3,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "firefox",
+      "request": "attach",
+      "name": "Attach",
+      "host": "127.0.0.1"
+    },
+
+    {
       "name": "ng serve",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      // "preLaunchTask": "npm: start",
+      "port": 4201,
+      "url": "https://localhost:4200/",
+      // "runtimeArgs": ["--ssl", "--ssl-key", "key.pem", "--ssl-cert", "cert.pem"]
     },
     {
       "name": "ng test",

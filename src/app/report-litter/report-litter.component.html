@@ -1,6 +1,6 @@
 <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
-    <label for="pieces">How Many?</label>
-    <input id="pieces" type="number" formControlName="pieces">
+    <label for="count">How Many?</label>
+    <input id="count" type="number" formControlName="count">
     <label for="comment">Any thoughts?</label>
     <input id="comment" type="text" formControlName="comment">
     <input id="pics" type="file" (change)="onFileSelect($event)" accept="image/png, image/jpeg" hidden #picsInput>

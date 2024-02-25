@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MapComponent } from './map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { GuardRoutingModule } from './routes/guard-routing.module';
+import { AnonRoutingModule } from './routes/anon-routing.module';
+import { AppComponent } from './app.component';
+import { MapComponent } from './map/map.component';
 import { ReportLitterComponent } from './report-litter/report-litter.component';
 import { LoginComponent } from './login/login.component';
+import { TestSocketComponent } from './test-socket/test-socket.component';
+import { JsonInterceptor } from './json.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -17,10 +22,12 @@ import { LoginComponent } from './login/login.component';
     MapComponent,
     ReportLitterComponent,
     LoginComponent,
+    TestSocketComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    GuardRoutingModule,
+    AnonRoutingModule,
     GoogleMapsModule,
     CommonModule,
     HttpClientModule,
@@ -30,7 +37,13 @@ import { LoginComponent } from './login/login.component';
   exports: [
     MapComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JsonInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
